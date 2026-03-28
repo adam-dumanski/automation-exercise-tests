@@ -1,5 +1,3 @@
-import loginPage from "./loginPage"
-
 class signupPage {
     // rejestracja imie
     get signupNameInput() {
