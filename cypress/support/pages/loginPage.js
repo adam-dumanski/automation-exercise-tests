@@ -29,7 +29,7 @@ class LoginPage {
     }
 
     visit() {
-        cy.visit('https://www.automationexercise.com')
+        cy.visit('https://www.automationexercise.com/')
     }
     // strona logowania
     goToLoginPage() {
@@ -52,6 +52,9 @@ class LoginPage {
     //wyloguj
     logout() {
         this.logoutLink.click()
+    }
+    shouldBeOnHomePage(){
+        cy.url().should('eq' , 'https://www.automationexercise.com/')
     }
 }
 
