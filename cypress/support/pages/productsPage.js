@@ -51,7 +51,11 @@ class productsPage {
         this.searchButton.click()
     }
     addProductToCart(index){
-        this.addToCartButton.eq(index).scrollIntoView().click()
+        this.addToCartButton
+            .eq(index)
+            .scrollIntoView()
+            .wait(500)
+            .click({force: true})
     }
     pressButtonAddToCart(){
         this.addToCartButton.click()
@@ -71,6 +75,26 @@ class productsPage {
     }
     goToCartFromPopup(){
         this.viewCartLinkPopup.click()
+    }
+    pressButtonContinue(){
+        this.continueShoppingButton.click()
+        cy.wait(500)
+        this.popupAdded.should('not.be.visible')
+    }
+    hoverAndAddProduct(index){
+        this.productsList
+            .eq(index)
+            .scrollIntoView()
+            .wait(300)
+            .trigger('mouseover')
+        this.productsList
+            .eq(index)
+            .find('.add-to-cart')
+            .first()
+            .click({force: true})
+
+
+
     }
 
 
