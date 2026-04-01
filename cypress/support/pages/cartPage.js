@@ -46,18 +46,25 @@ class cartPage {
         this.productName.should('contain' , name)
     }
     //czyszczenie koszyka 
-    clearCart(){
-        cy.visit('https://www.automationexercise.com/view_cart')
-        cy.get('body').then($body => {
-            if ($body.find('.cart_quantity_delete').length > 0) {
-                cy.get('.cart_quantity_delete').click({multiple: true})
-                cy.wait(1000)
-        }
-    })
+    clearCart() {
+    cy.visit('https://www.automationexercise.com/view_cart')
+    cy.wait(1000)
     
-        // Wróć na stronę główną
-         cy.visit('https://www.automationexercise.com')
-    }
+    // Sprawdź w DOM czy istnieją buttony
+    cy.get('body').then($body => {
+        const buttons = $body.find('.cart_quantity_delete')
+        
+        if (buttons.length > 0) {
+            // Usuń wszystkie jeden po drugim
+            for (let i = 0; i < buttons.length; i++) {
+                cy.get('.cart_quantity_delete').first().click({force: true})
+                cy.wait(500)
+            }
+        }
+ })
+    
+    cy.visit('https://www.automationexercise.com')
+}
 
 }
 
