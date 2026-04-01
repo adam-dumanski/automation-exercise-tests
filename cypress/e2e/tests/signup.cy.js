@@ -32,7 +32,7 @@ describe('Testy rejestracji',() => {
     })
     it('Test 2: "Powinien pokazać błąd przy istniejącym emailu"' , () => {
         const randomUser = `User_${Math.floor(Math.random() * 10)}`
-        signupPage.fillSignupForm(radnomUser , 'test@test.com')
+        signupPage.fillSignupForm(randomUser , 'test@test.com')
         signupPage.pressSignupButton()
         signupPage.emailIsAlreadyUsed()
     })

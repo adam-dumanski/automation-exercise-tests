@@ -39,6 +39,7 @@ class LoginPage {
     login(email, password){
         this.loginEmailInput.type(email)
         this.loginPasswordInput.type(password)
+        this.loginButton.click()
     }
     // błąd jak złe hasło/login
     shouldShowError(message) {

@@ -45,6 +45,19 @@ class cartPage {
         this.productName.should('be.visible')
         this.productName.should('contain' , name)
     }
+    //czyszczenie koszyka 
+    clearCart(){
+        cy.visit('https://www.automationexercise.com/view_cart')
+        cy.get('body').then($body => {
+            if ($body.find('.cart_quantity_delete').length > 0) {
+                cy.get('.cart_quantity_delete').click({multiple: true})
+                cy.wait(1000)
+        }
+    })
+    
+        // Wróć na stronę główną
+         cy.visit('https://www.automationexercise.com')
+    }
 
 }
 

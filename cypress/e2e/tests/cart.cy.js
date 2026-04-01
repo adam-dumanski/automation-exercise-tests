@@ -7,7 +7,6 @@ describe ('TESTY KOSZYKA' , () => {
         loginPage.visit()
         loginPage.goToLoginPage()
         loginPage.login('qa_adams_tests@mailsac.com' , 'ilUSzC&0szs&')
-        loginPage.loginButton.click()
         // Wyczyść koszyk przed każdym testem
         cy.visit('https://www.automationexercise.com/view_cart')
         cy.get('body').then($body => {
