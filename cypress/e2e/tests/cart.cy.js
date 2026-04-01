@@ -7,14 +7,7 @@ describe ('TESTY KOSZYKA' , () => {
         loginPage.visit()
         loginPage.goToLoginPage()
         loginPage.login('qa_adams_tests@mailsac.com' , 'ilUSzC&0szs&')
-        // Wyczyść koszyk przed każdym testem
-        cy.visit('https://www.automationexercise.com/view_cart')
-        cy.get('body').then($body => {
-            if ($body.find('.cart_quantity_delete').length > 0) {
-                cy.get('.cart_quantity_delete').click({multiple: true})
-                cy.wait(1000)
-        }
-    })
+        cartPage.clearCart()
     
         // Wróć na stronę główną
          cy.visit('https://www.automationexercise.com')
